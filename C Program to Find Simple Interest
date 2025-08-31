@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int main() {
+  float year,original,rate ;
+  scanf("%f %f %f",&year,&original,&rate);
+  
+  printf("%.2f the simple interest\n ",year*original*rate/100 );
+ 
+ 
+    return 0;
+}
