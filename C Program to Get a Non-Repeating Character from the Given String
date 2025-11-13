@@ -1,5 +1,22 @@
 #include <stdio.h>
 #include <string.h>
-int main(){char s[100];int i,j,flag;gets(s);
-for(i=0;i<strlen(s);i++){flag=1;for(j=0;j<strlen(s);j++)if(i!=j&&s[i]==s[j])flag=0;
-if(flag){printf("%c",s[i]);break;}}}
+
+int main() {
+    char str[100];
+    int freq[256] = {0};
+    printf("Enter a string: ");
+    gets(str);
+    
+    for(int i = 0; str[i]; i++) {
+        freq[(unsigned char)str[i]]++;
+    }
+    
+    for(int i = 0; str[i]; i++) {
+        if(freq[(unsigned char)str[i]] == 1) {
+            printf("First non-repeating character: %c\n", str[i]);
+            return 0;
+        }
+    }
+    printf("No non-repeating character found.\n");
+    return 0;
+}
