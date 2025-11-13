@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j, spaces;
+    printf("Enter rows: ");
+    if (scanf("%d", &n) != 1) return 0;
+    // top (full)
+    for (i = 0; i < 2*n-1; i++) printf("*");
+    printf("\n");
+    for (i = n-1; i >= 1; i--) {
+        for (j = 0; j < n - i; j++) printf(" ");
+        if (i == 1) {
+            printf("*\n");
+            continue;
+        }
+        printf("*");
+        spaces = 2*i - 3;
+        for (j = 0; j < spaces; j++) printf(" ");
+        printf("*\n");
+    }
+    return 0;
+}
