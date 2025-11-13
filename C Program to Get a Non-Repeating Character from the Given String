@@ -1,0 +1,5 @@
+#include <stdio.h>
+#include <string.h>
+int main(){char s[100];int i,j,flag;gets(s);
+for(i=0;i<strlen(s);i++){flag=1;for(j=0;j<strlen(s);j++)if(i!=j&&s[i]==s[j])flag=0;
+if(flag){printf("%c",s[i]);break;}}}
