@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[200];
+    char delimiter[] = " ";
+    printf("Enter a string: ");
+    gets(str);
+    
+    char *token = strtok(str, delimiter);
+    int count = 1;
+    while(token != NULL) {
+        printf("Substring %d: %s\n", count++, token);
+        token = strtok(NULL, delimiter);
+    }
+    return 0;
+}
