@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    char ch = 'A';
+    printf("Enter rows: ");
+    if (scanf("%d", &n) != 1) return 0;
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("%c ", ch);
+            ch++;
+            if (ch > 'Z') ch = 'A'; // wrap if needed
+        }
+        printf("\n");
+    }
+    return 0;
+}
