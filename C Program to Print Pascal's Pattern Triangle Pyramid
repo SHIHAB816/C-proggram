@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+long long comb(int n, int k) {
+    long long res = 1;
+    if (k > n - k) k = n - k;
+    for (int i = 0; i < k; ++i) {
+        res = res * (n - i) / (i + 1);
+    }
+    return res;
+}
+
+int main() {
+    int n;
+    printf("Enter number of rows: ");
+    if (scanf("%d", &n) != 1) return 0;
+    for (int i = 0; i < n; i++) {
+        for (int s = 0; s < n - i - 1; s++) printf(" ");
+        for (int j = 0; j <= i; j++) {
+            printf("%lld ", comb(i, j));
+        }
+        printf("\n");
+    }
+    return 0;
+}
