@@ -1,3 +1,38 @@
 #include <stdio.h>
 #include <string.h>
-int main(){char a[20],b[20];int x,y;scanf("%s%s",a,b);x=strtol(a,0,2);y=strtol(b,0,2);printf("%b",x+y);}
+
+void addBinary(char a[], char b[], char result[]) {
+    int i = strlen(a) - 1;
+    int j = strlen(b) - 1;
+    int carry = 0, k = 0;
+    char temp[100];
+    
+    while(i >= 0 || j >= 0 || carry) {
+        int sum = carry;
+        if(i >= 0) sum += a[i--] - '0';
+        if(j >= 0) sum += b[j--] - '0';
+        
+        temp[k++] = (sum % 2) + '0';
+        carry = sum / 2;
+    }
+    
+    temp[k] = '\0';
+    
+    // Reverse temp to get the result
+    for(int m = 0; m < k; m++) {
+        result[m] = temp[k - m - 1];
+    }
+    result[k] = '\0';
+}
+
+int main() {
+    char a[100], b[100], result[100];
+    printf("Enter first binary string: ");
+    scanf("%s", a);
+    printf("Enter second binary string: ");
+    scanf("%s", b);
+    
+    addBinary(a, b, result);
+    printf("Sum: %s\n", result);
+    return 0;
+}
