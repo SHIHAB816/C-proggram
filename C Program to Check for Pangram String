@@ -1,0 +1,5 @@
+#include <stdio.h>
+#include <ctype.h>
+int main(){char s[200];int i,flag[26]={0};gets(s);
+for(i=0;s[i];i++)if(isalpha(s[i]))flag[tolower(s[i])-'a']=1;
+for(i=0;i<26&&flag[i];i++);if(i==26)printf("Pangram");else printf("Not Pangram");}
