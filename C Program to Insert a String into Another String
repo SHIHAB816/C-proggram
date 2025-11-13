@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[200], str2[100];
+    int pos;
+    
+    printf("Enter first string: ");
+    gets(str1);
+    printf("Enter string to insert: ");
+    gets(str2);
+    printf("Enter position to insert: ");
+    scanf("%d", &pos);
+    
+    int len1 = strlen(str1);
+    int len2 = strlen(str2);
+    
+    if(pos > len1) pos = len1;
+    
+    // Move the part of str1 from pos to the end to the right by len2 positions
+    for(int i = len1; i >= pos; i--) {
+        str1[i + len2] = str1[i];
+    }
+    
+    // Insert str2 into str1 at position pos
+    for(int i = 0; i < len2; i++) {
+        str1[pos + i] = str2[i];
+    }
+    
+    printf("Resulting string: %s\n", str1);
+    return 0;
+}
