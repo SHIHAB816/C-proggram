@@ -1,0 +1,3 @@
+#include <stdio.h>
+#include <string.h>
+int main(){char s[100];gets(s);if(strcmp(s,strrev(s))==0)printf("Palindrome");else printf("Not");}
