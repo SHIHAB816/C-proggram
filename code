@@ -1,0 +1,74 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Enter array size: ");
+    scanf("%d", &n);
+
+    if (n <= 0) {
+        printf("Invalid array size\n");
+        return 0;
+    }
+
+    int arr[n];
+    int freq[n];
+
+    printf("Enter %d numbers: ", n);
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+        freq[i] = -1;
+    }
+
+    // Count the frequency of each distinct number
+    for (int i = 0; i < n; i++) {
+        if (freq[i] == -1) {
+            int count = 1;
+
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i] == arr[j]) {
+                    count++;
+                    freq[j] = 0;
+                }
+            }
+
+            freq[i] = count;
+        }
+    }
+
+    int firstFreq = -1, secondFreq = -1;
+    int firstNum = 0, secondNum = 0;
+
+    // Find the first and second ranked numbers
+    for (int i = 0; i < n; i++) {
+        if (freq[i] <= 0)
+            continue;
+
+        int num = arr[i];
+        int f = freq[i];
+
+        if (f > firstFreq || (f == firstFreq && num > firstNum)) {
+            secondFreq = firstFreq;
+            secondNum = firstNum;
+
+            firstFreq = f;
+            firstNum = num;
+        }
+        else if (num != firstNum &&
+                 (f > secondFreq ||
+                  (f == secondFreq && num > secondNum))) {
+            secondFreq = f;
+            secondNum = num;
+        }
+    }
+
+    if (secondFreq == -1) {
+        printf("Not Found\n");
+    } else {
+        printf("Second most frequent number: %d\n", secondNum);
+        printf("Frequency: %d\n", secondFreq);
+    }
+
+    return 0;
+}
